@@ -52,7 +52,6 @@ void digitalPin::off() // LED aus
   _status = LOW;
   digitalWrite(_pin, LOW); //set the pin HIGH and thus turn LED off
 }
-
 void digitalPin::blink(int intervall) // LED intervall ms blinken lassen
 {
   // check to see if it's time to change the state of the LED
@@ -68,7 +67,6 @@ void digitalPin::blink(int intervall) // LED intervall ms blinken lassen
   }
   _currentMillis = millis();
 }
-
 void digitalPin::fade(uint8_t value) // LED Helligkeit setzen
 {
   analogWrite(_pin, value);
@@ -111,7 +109,6 @@ bool digitalPin::tread()
   }
   return _status;
 }
-
 void digitalPin::write(bool val) {
   _status = val;
   digitalWrite(_pin, _status);

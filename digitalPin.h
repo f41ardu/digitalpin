@@ -15,25 +15,24 @@
 
 class digitalPin
 {
-  public:                             // öffentlich
-    digitalPin();                   // der Default-Konstruktor
-    digitalPin(uint8_t);             // Konstruktor mit Parameter
-    digitalPin(unsigned int,  uint8_t ); // Button Debounce
+  public:                             // Public 
+    digitalPin();                   // Default-Constructor
+    digitalPin(uint8_t);             // Constructor with parameter - paramater number of pin used internal
+    digitalPin(unsigned int,  uint8_t ); // Button constructor time in ms, pin 
     digitalPin(uint8_t, unsigned int, unsigned int);
-    //   digitalPin(const LED& a);     // Copy-Konstruktor wird nicht benötigt
     ~digitalPin();                     // Class Destruktor
     // Funktionen
-    uint8_t init(uint8_t);           // einen PIN initialisieresn
-    void on();                        // einen PIN einschalten
-    void off();                       // einen PIN ausschalten
-    void blink(int);        // PIN ein und auschalten (intervall)
-    void fade(uint8_t);             // eine Spannung (0 .. 5Volt/255) am PIN ausgeben
-    void timechange(int, int);
-    void toggle();                    // PIN Zustand umschalten (ON/OFF, OFF/ON)
-    void flash();                     // PIN ein und auschalten (OnTime, OffTime)
-    bool tread();                     // PIN Button lesen
-    bool read();                      // PIN status lesen
-    void write(bool);
+    uint8_t init(uint8_t);           // Init PIN 
+    void on();                        // PIN on 
+    void off();                       // PIN off
+    void blink(int);        // PIN on / off intervall in ms
+    void fade(uint8_t);             // Voltage to PIN (0 .. 255) -> 0 .. 5 volt
+    void timechange(int, int);        // Set ON/OFF time in ms
+    void toggle();                    // Toggle PIN  ON/OFF, OFF/ON)
+    void flash();                     // Flash PIN (OnTime, OffTime)
+    bool tread();                     // Read Button state (debounced)
+    bool read();                      // read status
+    void write(bool);                 // write status
 
     // Operator Overload
     digitalPin& operator=(bool);
