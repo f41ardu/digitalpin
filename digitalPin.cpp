@@ -85,17 +85,17 @@ void digitalPin::timechange(int OnTime, int OffTime) //
 
 void digitalPin::flash() {
   // check to see if it's time to change the state of the LED
-  if ((_currentMillis - _previousMillis >= _OnTime))
-  {
-    toggle();  // Turn it off
-    _previousMillis = _currentMillis;  // Remember the time
-  }
-  else if ((_currentMillis - _previousMillis >= _OffTime))
-  {
-    toggle();  // turn it on
-    _previousMillis = _currentMillis;   // Remember the time
-  }
   _currentMillis = millis();
+  if ((_status == HIGH) && (_currentMillis - _previousMillis >= _OnTime))
+  {
+    _previousMillis = _currentMillis;  // Remember the time
+   off();  // turn it off
+  } 
+  else if ((_status == LOW) && (_currentMillis - _previousMillis >= _OffTime))
+  {
+    _previousMillis = _currentMillis;   // Remember the time
+    on();  // turn it on
+  }
 }
 
 bool digitalPin::tread()
